@@ -1,0 +1,12 @@
+
+<%= form_with model: company do |f| %>
+  <%= f.label :name, "Razão Social"%>
+  <%= f.text_field :name %>
+  <%= f.label :cnpj, "CNPJ"%>
+  <%= f.text_field :cnpj %>
+  <%= f.label :address, "Endereço de Faturamento" %>
+  <%= f.text_field :address %>
+  <%= f.label :email, "E-mail para Faturamento"%>
+  <%= f.text_field :email %>
+  <%= f.submit button_text %>
+<% end %>
