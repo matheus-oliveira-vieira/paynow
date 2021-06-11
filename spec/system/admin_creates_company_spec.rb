@@ -13,7 +13,7 @@ describe 'Admin registers companies' do
     fill_in 'E-mail para Faturamento', with: 'contato@teachtech.com'
     click_on 'Criar Empresa'
 
-    expect(current_path).to eq(course_path(Course.last))
+    expect(current_path).to eq(company_path(Company.last))
     expect(page).to have_content('TeachTech')
     expect(page).to have_content('92107397000133')
     expect(page).to have_content('Rua A 123')
@@ -22,29 +22,12 @@ describe 'Admin registers companies' do
   end
 
   it 'and attributes cannot be blank' do
-    user_login
+    
     visit root_path
-    click_on 'Cursos'
-    click_on 'Registrar um Curso'
-    click_on 'Criar curso'
+    click_on 'Empresas'
+    click_on 'Registrar uma Empresa'
+    click_on 'Criar Empresa'
 
-    expect(page).to have_content('não pode ficar em branco', count: 3)
-    expect(page).to have_content('Instrutor(a) é obrigatório(a)')
-  end
-
-  it 'and code must be unique' do
-    instructor = Instructor.create!(name: 'Fulano Sicrano',
-                                    email: 'fulano@codeplay.com.br')
-    Course.create!(name: 'Ruby', description: 'Um curso de Ruby',
-                   code: 'RUBYBASIC', price: 10,
-                   enrollment_deadline: '22/12/2033', instructor: instructor)
-    user_login
-    visit root_path
-    click_on 'Cursos'
-    click_on 'Registrar um Curso'
-    fill_in 'Código', with: 'RUBYBASIC'
-    click_on 'Criar curso'
-
-    expect(page).to have_content('já está em uso')
+    expect(page).to have_content('não pode ficar em branco')
   end
 end

@@ -1,4 +1,12 @@
 
+<% if company.errors.any? %>
+  <p>Foram encontrados <%= company.errors.count %> erro(s):</p>
+  <ul>
+    <% company.errors.full_messages.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+<% end %>
 <%= form_with model: company do |f| %>
   <%= f.label :name, "Razão Social"%>
   <%= f.text_field :name %>
