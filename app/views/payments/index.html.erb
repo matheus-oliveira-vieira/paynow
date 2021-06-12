@@ -1,0 +1,20 @@
+<% if @payments.empty? %>
+  <p><%= "Nenhuma forma de pagamento cadastrada" %> </p>
+<% else %>
+  <dl>
+  <% @payments.each do |payment| %>
+    <dt>Nome: </dt>
+    <dd> <%= link_to payment.name, payment_path(payment.id) %> </dd>
+    <dt>Tipo: </dt>
+    <dd> <%= payment.type %> </dd>
+    <dt>Taxa por Cobrança: </dt>
+    <dd> <%= payment.fee_percentage %> </dd>
+    <dt>Taxa máxima (R$): </dt>
+    <dd> <%= payment.max_fee %> </dd>
+    <dt>Ativo: </dt>
+    <dd> <%= payment.active ? 'Sim' : 'Não' %> </dd>
+  <% end %>
+  </dl>
+<% end %>
+<%= link_to "Registrar uma Forma de Pagamento", new_payment_path %>
+<%= link_to "Voltar Para a página Inicial", root_path %>

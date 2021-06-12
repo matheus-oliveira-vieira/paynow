@@ -12,7 +12,7 @@ describe 'Admin registers companies' do
     fill_in 'Endereço de Faturamento', with: 'Rua A 123'
     fill_in 'E-mail para Faturamento', with: 'contato@teachtech.com'
     click_on 'Criar Empresa'
-
+    
     expect(current_path).to eq(company_path(Company.last))
     expect(page).to have_content('TeachTech')
     expect(page).to have_content('92107397000133')
