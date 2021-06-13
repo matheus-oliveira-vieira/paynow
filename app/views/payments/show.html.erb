@@ -1,0 +1,23 @@
+<% if @payment.logo.attached? %>
+  <%= image_tag @payment.logo %>
+<% end %>
+<h1><%= @payment.name %></h1>
+<dl>
+  <dt>Tipo de Pagamento</dt>
+  <dd><%= @payment.type_payment %></dd>
+  <dt>Taxa por Cobrança</dt>
+  <dd><%= number_to_percentage(@payment.fee_percentage, delimiter: ',', precision: 1) %></dd>
+  <dt>Taxa máxima (R$)</dt>
+  <dd><%= number_to_currency @payment.max_fee %></dd>
+  <dt>Status</dt>
+  <dd><%= @payment.active ? 'Ativo' : 'Inativo' %></dd>
+</dl>
+
+<% if @payment.active? %>
+  <%= link_to 'Inativar', payment_inactivate_path(@payment.id), method: :patch%>
+<%else%>
+  <%= link_to 'Ativar', payment_activate_path(@payment.id), method: :patch%>
+<%end%>
+
+<%= link_to 'Editar', edit_payment_path(@payment) %>
+<%= link_to 'Voltar', root_path %>

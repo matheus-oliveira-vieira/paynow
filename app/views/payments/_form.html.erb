@@ -1,0 +1,21 @@
+<% if payment.errors.any? %>
+  <p>Foram encontrados <%= payment.errors.count %> erro(s):</p>
+  <ul>
+    <% payment.errors.full_messages.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+<% end %>
+<%= form_with model: payment do |f| %>
+  <%= f.label :name, "Nome do Pagamento" %>
+  <%= f.text_field :name %>
+  <%= f.label :type_payment, 'Tipo de Pagamento' %>
+  <%= f.select :type_payment, Payment.type_payments.keys %>
+  <%= f.label :fee_percentage, 'Taxa por Cobrança' %>
+  <%= f.number_field :fee_percentage %>
+  <%= f.label :max_fee, 'Taxa máxima (R$)' %>
+  <%= f.number_field :max_fee %>
+  <%= f.label :logo, 'Logo' %>
+  <%= f.file_field :logo %>
+  <%= f.submit button_text %>
+<% end %>

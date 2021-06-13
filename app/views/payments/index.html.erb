@@ -11,8 +11,8 @@
     <dd> <%= payment.fee_percentage %> </dd>
     <dt>Taxa máxima (R$): </dt>
     <dd> <%= payment.max_fee %> </dd>
-    <dt>Ativo: </dt>
-    <dd> <%= payment.active ? 'Sim' : 'Não' %> </dd>
+    <dt>Status: </dt>
+    <dd> <%= payment.active ? 'Ativo' : 'Inativo' %> </dd>
   <% end %>
   </dl>
 <% end %>

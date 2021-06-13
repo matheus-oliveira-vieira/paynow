@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_12_140305) do
+ActiveRecord::Schema.define(version: 2021_06_13_145917) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 2021_06_12_140305) do
 
   create_table "payments", force: :cascade do |t|
     t.string "name"
-    t.string "type"
+    t.integer "type_payment"
     t.decimal "fee_percentage"
     t.decimal "max_fee"
     t.datetime "created_at", precision: 6, null: false

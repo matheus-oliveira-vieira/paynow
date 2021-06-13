@@ -17,13 +17,18 @@ describe 'Admin registers payments' do
     expect(current_path).to eq(payment_path(Payment.last))
     expect(page).to have_content('Banco Ximira')
     expect(page).to have_content('pix')
-    expect(page).to have_content('1.1 %')
+    expect(page).to have_content('1,1%')
     expect(page).to have_content('R$ 30,00')
-    expect(page).to have_css('img[src*="course.png"]')
+    expect(page).to have_css('img[src*="logo.png"]')
     expect(page).to have_link('Voltar')
   end
 
-  xit 'and attributes cannot be blank' do
+  it 'and attributes cannot be blank' do
+    visit root_path
+    click_on 'Formas de Pagamento'
+    click_on 'Registrar uma Forma de Pagamento'
+    click_on 'Criar Forma de Pagamento'
     
+    expect(page).to have_content('não pode ficar em branco')
   end
 end
