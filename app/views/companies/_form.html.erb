@@ -8,13 +8,13 @@
   </ul>
 <% end %>
 <%= form_with model: company do |f| %>
-  <%= f.label :name, "Razão Social"%>
+  <%= f.label :name%>
   <%= f.text_field :name %>
-  <%= f.label :cnpj, "CNPJ"%>
+  <%= f.label :cnpj%>
   <%= f.text_field :cnpj %>
-  <%= f.label :address, "Endereço de Faturamento" %>
+  <%= f.label :address %>
   <%= f.text_field :address %>
-  <%= f.label :email, "E-mail para Faturamento"%>
+  <%= f.label :email %>
   <%= f.text_field :email %>
   <%= f.submit button_text %>
 <% end %>

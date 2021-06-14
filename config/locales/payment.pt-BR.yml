@@ -1,0 +1,12 @@
+---
+pt-BR:
+  activerecord:
+    models:
+      payment: 'Forma de Pagamento'
+    attributes:
+      payment:
+        name: 'Nome do Pagamento'
+        type_payment: 'Tipo de Pagamento'
+        fee_percentage: 'Taxa por Cobrança'
+        max_fee: 'Taxa máxima (R$)'
+        logo: 'Logo'

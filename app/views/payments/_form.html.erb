@@ -7,15 +7,15 @@
   </ul>
 <% end %>
 <%= form_with model: payment do |f| %>
-  <%= f.label :name, "Nome do Pagamento" %>
+  <%= f.label :name %>
   <%= f.text_field :name %>
-  <%= f.label :type_payment, 'Tipo de Pagamento' %>
+  <%= f.label :type_payment %>
   <%= f.select :type_payment, Payment.type_payments.keys %>
-  <%= f.label :fee_percentage, 'Taxa por Cobrança' %>
+  <%= f.label :fee_percentage %>
   <%= f.number_field :fee_percentage %>
-  <%= f.label :max_fee, 'Taxa máxima (R$)' %>
+  <%= f.label :max_fee %>
   <%= f.number_field :max_fee %>
-  <%= f.label :logo, 'Logo' %>
+  <%= f.label :logo %>
   <%= f.file_field :logo %>
   <%= f.submit button_text %>
 <% end %>
