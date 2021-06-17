@@ -35,6 +35,15 @@ class CompaniesController < ApplicationController
     end
   end
 
+  def refresh_token
+    @company = Company.find(params[:company_id])
+    if @company.refresh_token!
+      redirect_to @company, notice: 'Token atualizado com sucesso'
+    else
+      render :show
+    end
+  end
+
   private
 
   def company_params

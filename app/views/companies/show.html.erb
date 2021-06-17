@@ -7,6 +7,7 @@
   <dt>E-mail para Faturamento</dt>
   <dd><%= @company.email %></dd>
 </dl>
-
+<%= link_to 'Atualizar Token', company_refresh_token_path(@company), method: :patch %>
+<%= link_to 'Escolher Métodos de Pagamento', #%>
 <%= link_to 'Editar', edit_company_path(@company) %>
 <%= link_to 'Voltar', root_path %>
