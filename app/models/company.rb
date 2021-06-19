@@ -1,5 +1,6 @@
 require 'securerandom'
 class Company < ApplicationRecord
+  audited
   validates :name, :cnpj, :email, :address, presence: true
   before_create :generate_token
 

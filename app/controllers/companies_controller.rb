@@ -40,7 +40,7 @@ class CompaniesController < ApplicationController
     if @company.refresh_token!
       redirect_to @company, notice: 'Token atualizado com sucesso'
     else
-      render :show
+      render :show, notice: 'Erro ao atualizar o Token'
     end
   end
 
