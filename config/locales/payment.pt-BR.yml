@@ -10,3 +10,4 @@ pt-BR:
         fee_percentage: 'Taxa por Cobrança'
         max_fee: 'Taxa máxima (R$)'
         logo: 'Logo'
+        bank_code: 'Código Bancário'
