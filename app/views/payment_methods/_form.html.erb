@@ -1,4 +1,13 @@
 <%= form_with model: payment_method, url: company_payment_methods_path do |f| %>
   <%= f.label :payment_id, 'Tipo de Pagamento' %>
-  <%= f.collection_select :payment_id, payment, :id, :display_name %>
+  <%= f.collection_select :payment_id, payments, :id, :display_name %>
+  <%= f.label :code, 'Chave' %>
+  <%= f.text_field :code %>
+  <div id='bank'>
+    <%= f.label :agency, 'Agência' %>
+    <%= f.text_field :agency%>
+    <%= f.label :bank_account, 'Número da conta'%>
+    <%= f.text_field :bank_account%>
+  </div>
+  <%= f.submit button_text %>
 <%end%>

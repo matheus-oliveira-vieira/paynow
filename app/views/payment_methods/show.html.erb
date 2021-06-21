@@ -1,0 +1,13 @@
+<h1>Pagamentos Cadastrados para a Empresa</h1>
+<dl>
+  <dt>Pagamento</dt>
+  <dd><%= @payment_method.payment.name %> - <%= @payment_method.payment.type_payment %></dd>
+  <dt>Código de transação</dt>
+  <dd><%= @payment_method.code %></dd>
+  <dt>Código do Banco</dt>
+  <dd><%= @payment_method.payment.bank_code == '000' ? 'não precisa' : @payment_method.payment.bank_code %></dd>
+  <dt>Número da Agência</dt>
+  <dd><%= @payment_method.agency == '000' ? 'não precisa' : @payment_method.agency %></dd>
+  <dt>Número da Conta Bancária</dt>
+  <dd><%= @payment_method.bank_account == '000' ? 'não precisa' : @payment_method.bank_account %></dd>
+</dl>

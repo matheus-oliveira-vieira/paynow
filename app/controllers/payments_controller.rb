@@ -15,7 +15,7 @@ class PaymentsController < ApplicationController
     
     @payment = Payment.new(payment_params)
     if @payment.save
-      byebug
+      #byebug
       @payment.active = true
       redirect_to @payment
     else
