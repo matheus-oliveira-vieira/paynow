@@ -11,3 +11,5 @@
   <dt>Número da Conta Bancária</dt>
   <dd><%= @payment_method.bank_account == '000' ? 'não precisa' : @payment_method.bank_account %></dd>
 </dl>
+
+<%= link_to 'Aplicar desconto para Forma de Pagamento', new_company_payment_method_discount_path(@payment_method.company, @payment_method)%>

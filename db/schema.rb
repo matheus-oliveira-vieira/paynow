@@ -73,13 +73,13 @@ ActiveRecord::Schema.define(version: 2021_06_22_222032) do
   end
 
   create_table "discounts", force: :cascade do |t|
-    t.integer "product_id"
+    t.integer "company_id"
     t.integer "payment_method_id"
     t.decimal "discount_percentage"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_discounts_on_company_id"
     t.index ["payment_method_id"], name: "index_discounts_on_payment_method_id"
-    t.index ["product_id"], name: "index_discounts_on_product_id"
   end
 
   create_table "payment_methods", force: :cascade do |t|
@@ -131,8 +131,8 @@ ActiveRecord::Schema.define(version: 2021_06_22_222032) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "discounts", "companies"
   add_foreign_key "discounts", "payment_methods"
-  add_foreign_key "discounts", "products"
   add_foreign_key "payment_methods", "companies"
   add_foreign_key "payment_methods", "payments"
   add_foreign_key "products", "companies"
