@@ -1,0 +1,10 @@
+<h1>Descontos aplicados nas formas de pagamento</h1>
+
+<dl>
+  <dt>Nome da Empresa</dt>
+  <dd><%= @discount.company.name %></dd>
+  <dt>Forma de pagamento</dt>
+  <dd><%= @discount.payment_method.display_name %></dd>
+  <dt>Desconto aplicado (%)</dt>
+  <dd><%= number_to_percentage(@discount.discount_percentage, precision: 0) %></dd>
+</dl>

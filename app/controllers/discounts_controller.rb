@@ -12,18 +12,19 @@ class DiscountsController < ApplicationController
   end
 
   def create
-    @discount = Discount.new(payment_method_params)
-    @discount.product_id = params[:product_id]
-    if @payment_method.save
+    @discount = Discount.new(discount_params)
+    @discount.company_id = params[:company_id]
+    @discount.payment_method_id = params[:payment_method_id]
+    if @discount.save
       #byebug
-      redirect_to company_payment_method_path(params[:company_id], @payment_method)
+      redirect_to company_payment_method_discount_path(params[:company_id], params[:payment_method_id], @discount)
     else
-      @payment = Payment.all
+      @payment_methods = PaymentMethod.all
       render :new
     end
   end
   private
-  def payment_method_params
-    params.require(:payment_method).permit(:payment_id, :code, :agency, :bank_account)
+  def discount_params
+    params.require(:discount).permit(:discount_percentage)
   end
 end
