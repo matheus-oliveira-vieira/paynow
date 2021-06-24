@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_22_222032) do
+ActiveRecord::Schema.define(version: 2021_06_24_183628) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -62,6 +62,14 @@ ActiveRecord::Schema.define(version: 2021_06_22_222032) do
     t.index ["user_id", "user_type"], name: "user_index"
   end
 
+  create_table "clients", force: :cascade do |t|
+    t.string "name"
+    t.string "cpf"
+    t.string "token"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "companies", force: :cascade do |t|
     t.string "name"
     t.string "cnpj"
@@ -111,6 +119,7 @@ ActiveRecord::Schema.define(version: 2021_06_22_222032) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "company_id"
+    t.string "token"
     t.index ["company_id"], name: "index_products_on_company_id"
   end
 

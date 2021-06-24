@@ -12,4 +12,13 @@ Rails.application.routes.draw do
     patch 'activate', to: 'payments#activate'
     patch 'inactivate', to: 'payments#inactivate'
   end
+
+  namespace :api do
+    namespace :v1 do
+      resources :clients do
+        patch 'generate_token', to: 'clients#generate_token'
+      end
+    end
+  end
+
 end
