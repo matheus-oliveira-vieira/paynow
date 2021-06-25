@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_24_183628) do
+ActiveRecord::Schema.define(version: 2021_06_25_223831) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -60,6 +60,31 @@ ActiveRecord::Schema.define(version: 2021_06_24_183628) do
     t.index ["created_at"], name: "index_audits_on_created_at"
     t.index ["request_uuid"], name: "index_audits_on_request_uuid"
     t.index ["user_id", "user_type"], name: "user_index"
+  end
+
+  create_table "charges", force: :cascade do |t|
+    t.integer "company_id"
+    t.integer "product_id"
+    t.integer "payment_method_id"
+    t.integer "client_id"
+    t.integer "discount_id"
+    t.string "card_number"
+    t.string "card_name"
+    t.string "card_code"
+    t.string "boleto_address"
+    t.decimal "original_price"
+    t.decimal "new_price"
+    t.string "token"
+    t.integer "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "date_payment"
+    t.string "bank_code_error"
+    t.index ["client_id"], name: "index_charges_on_client_id"
+    t.index ["company_id"], name: "index_charges_on_company_id"
+    t.index ["discount_id"], name: "index_charges_on_discount_id"
+    t.index ["payment_method_id"], name: "index_charges_on_payment_method_id"
+    t.index ["product_id"], name: "index_charges_on_product_id"
   end
 
   create_table "clients", force: :cascade do |t|
@@ -140,6 +165,11 @@ ActiveRecord::Schema.define(version: 2021_06_24_183628) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "charges", "clients"
+  add_foreign_key "charges", "companies"
+  add_foreign_key "charges", "discounts"
+  add_foreign_key "charges", "payment_methods"
+  add_foreign_key "charges", "products"
   add_foreign_key "discounts", "companies"
   add_foreign_key "discounts", "payment_methods"
   add_foreign_key "payment_methods", "companies"

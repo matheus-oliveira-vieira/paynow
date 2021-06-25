@@ -1,0 +1,18 @@
+<h1>Todas as Cobranças</h1>
+
+<dl>
+
+<%@charges.each do |charge|%>
+ 
+  
+    <dt>Produto: </dt>
+    <dd><%= charge.product.name %> </dd>
+    <dt>Status: </dt>
+    <dd><%= charge.status %> </dd>
+    <dt>Valor com desconto (R$): </dt>
+    <dd><%= number_to_currency charge.new_price %> </dd>
+    
+    <dt> <%= link_to 'Alterar Status da Cobrança', edit_charge_path(charge.id) %> </dt>
+    
+<%end%>
+</dl>

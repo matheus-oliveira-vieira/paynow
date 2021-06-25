@@ -10,15 +10,12 @@ class Api::V1::ClientsController < ActionController::API
     if @client.token.blank?
       @client.token = Client.generate_token
       #byebug
-      @client.update!(client_params)
+      @client.save!
       render json: @client.as_json(except: [:id, :created_at, :updated_at])
     else
       render json: {status: "error", code: 3000, message: "Token already provided"}
     end
   end
 
-  private
-  def client_params
-    params.permit(:name, :cpf, :token)
-  end
+  
 end

@@ -1,0 +1,11 @@
+<%= form_with model: @charge do |f| %>
+  <%= f.radio_button :status, "aprovada" %>
+  <%= f.label :status_aprovada, "Aprovar" %>
+  <%= f.radio_button :status, "pendente" %>
+  <%= f.label :status_rejeitada, "Rejeitar" %>
+  <%= f.label :date_payment, 'Data efetiva da operação'%>
+  <%= f.text_field :date_payment %>
+  <%= f.label :bank_code_error, 'Código de erro'%>
+  <%= f.text_field :bank_code_error %>
+  <%= f.submit 'Salvar' %>
+<%end%>
