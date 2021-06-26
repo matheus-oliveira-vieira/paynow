@@ -11,7 +11,7 @@ describe 'Admin manage charges' do
     charge = Charge.create!(company_id: company.id, product_id: product.id, payment_method_id: payment_method.id,
                             client_id: client.id, discount_id: discount.id, card_name: 'MATHEUS O VIEIRA',
                             card_number: '1234567890123456', card_code: '789', original_price: product.price,
-                            new_price: 28.5, status: 'pendente')
+                            new_price: 28.5, expiration_date:'30/06/2021', status: 'pendente')
     
     visit root_path
     click_on 'Ver todas as cobranças'
@@ -19,9 +19,11 @@ describe 'Admin manage charges' do
     choose :charge_status_aprovada
     fill_in 'Data efetiva da operação', with: '25/06/2021'
     click_on 'Salvar'
-    click_on 'Ver todas as cobranças'
 
-    expect(page).to have_content('aprovada')
+    expect(page).to have_content('Curso de Ruby on Rails')
+    expect(page).to have_content('30/06/2021')
+    expect(page).to have_content('25/06/2021')
+    
     
 
   end
@@ -35,7 +37,7 @@ describe 'Admin manage charges' do
     charge = Charge.create!(company_id: company.id, product_id: product.id, payment_method_id: payment_method.id,
                             client_id: client.id, discount_id: discount.id, card_name: 'MATHEUS O VIEIRA',
                             card_number: '1234567890123456', card_code: '789', original_price: product.price,
-                            new_price: 28.5, status: 'pendente')
+                            new_price: 28.5, expiration_date:'30/06/2021', status: 'pendente')
     
     visit root_path
     click_on 'Ver todas as cobranças'

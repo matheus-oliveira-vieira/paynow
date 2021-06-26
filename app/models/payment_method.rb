@@ -1,3 +1,4 @@
+require 'securerandom'
 class PaymentMethod < ApplicationRecord
   belongs_to :payment
   belongs_to :company
@@ -5,6 +6,10 @@ class PaymentMethod < ApplicationRecord
 
   def display_name
     "#{self.payment.name} - #{self.payment.type_payment}"
+  end
+
+  def send_payment_confirmation
+    SecureRandom.hex(10)
   end
 
   private

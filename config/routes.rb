@@ -20,7 +20,9 @@ Rails.application.routes.draw do
       resources :clients do
         patch 'generate_token', to: 'clients#generate_token'
       end
-      resources :charges 
+      resources :charges
+      get 'search_by_expiration_date', to:"charges#search_by_expiration_date"
+      get 'search_by_payment_method', to:"charges#search_by_payment_method"
     end
   end
 
