@@ -1,3 +1,18 @@
+<h1>Buscar cobranças</h1>
+
+<%= form_with url: search_path, method: :get do %>
+    <%= radio_button_tag :q, 30.days.ago.to_date %>
+    <%= label_tag :"#{30.days.ago.to_date}", '30 dias atrás' %>
+    
+    <%= radio_button_tag :q, 90.days.ago.to_date %>
+    <%= label_tag :"#{90.days.ago.to_date}", '90 dias atrás' %>
+    
+    <%= radio_button_tag :q, '1' %>
+    <%= label_tag :q_1, 'Histórico completo' %>
+    
+    <%= submit_tag 'Pesquisar' %>
+  <% end %>
+
 <h1>Todas as Cobranças</h1>
 
 <dl>

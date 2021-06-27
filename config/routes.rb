@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   end
 
   resources :charges
+  get 'search', to:"charges#search"
 
   namespace :api do
     namespace :v1 do

@@ -1,0 +1,18 @@
+<h1>Resultado da busca</h1>
+  
+<dl>
+  <% @charges.each do |charge| %>
+    <dt>Nome do produto</dt>
+    <dd><%= charge.product.name %></dd>
+    
+    <dt>Nome do cliente</dt>
+    <dd><%= charge.client.name %></dd>
+    
+    <dt>Data de Vencimento</dt>
+    <dd><%= charge.expiration_date %></dd>
+    
+    <dt>Status</dt>
+    <dd><%= charge.status %></dd>
+    
+  <% end %>
+</dl>

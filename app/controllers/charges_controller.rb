@@ -29,6 +29,11 @@ class ChargesController < ApplicationController
     end
   end
 
+  def search
+    @charges = Charge.where('expiration_date like ?',"%#{params[:q]}%")
+    #byebug
+  end
+
   private
 
   def charge_params
