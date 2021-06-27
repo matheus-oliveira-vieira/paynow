@@ -6,9 +6,14 @@
   <dd><%= @company.address %></dd>
   <dt>E-mail para Faturamento</dt>
   <dd><%= @company.email %></dd>
+  <dt>Token</dt>
+  <dd><%= @company.token %></dd>
 </dl>
-<%= link_to 'Atualizar Token', company_refresh_token_path(@company), method: :patch %>
+
+<%if current_user && current_user.administrator_paynow?%>
+  <%= link_to 'Atualizar Token', company_refresh_token_path(@company), method: :patch %>
+  <%= link_to 'Editar', edit_company_path(@company) %>
+<%end%>
 <%= link_to 'Adicionar Método de Pagamento', new_company_payment_method_path(@company)%>
 <%= link_to 'Adicionar produto', new_company_product_path(@company) %>
-<%= link_to 'Editar', edit_company_path(@company) %>
 <%= link_to 'Voltar', root_path %>

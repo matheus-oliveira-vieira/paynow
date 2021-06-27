@@ -5,7 +5,8 @@ describe 'Admin Choose payment methods' do
     payment_pix = Payment.create!(name: 'Banco Ximira', type_payment: 'pix', fee_percentage: '1.1', max_fee: '30', active: true, bank_code: '987')
     payment_credit = Payment.create!(name: 'Dev Card', type_payment: 'credito', fee_percentage: '1.2', max_fee: '50', active: true, bank_code: '000')
     company = Company.create!(name: 'TeachTech', cnpj: '92107397000133', address: 'Rua A 123', email: 'contato@teachtech.com')
-    
+    user = User.create!(email: 'matheus@teachtech.com.br', password: '123456')
+    login_as user, scope: :user
     visit company_path(company)
     click_on 'Adicionar Método de Pagamento'
     select "#{payment_pix.name} - #{payment_pix.type_payment}", from: 'Tipo de Pagamento'
@@ -20,7 +21,8 @@ describe 'Admin Choose payment methods' do
     payment_pix = Payment.create!(name: 'Banco Ximira', type_payment: 'pix', fee_percentage: '1.1', max_fee: '30', active: true, bank_code: '987')
     payment_credit = Payment.create!(name: 'Dev Card', type_payment: 'credito', fee_percentage: '1.2', max_fee: '50', active: true, bank_code: '000')
     company = Company.create!(name: 'TeachTech', cnpj: '92107397000133', address: 'Rua A 123', email: 'contato@teachtech.com')
-    
+    user = User.create!(email: 'matheus@teachtech.com.br', password: '123456')
+    login_as user, scope: :user
     visit company_path(company)
     click_on 'Adicionar Método de Pagamento'
     select "#{payment_credit.name} - #{payment_credit.type_payment}", from: 'Tipo de Pagamento'
@@ -35,7 +37,8 @@ describe 'Admin Choose payment methods' do
     payment_boleto = Payment.create!(name: 'Banco Ximira', type_payment: 'boleto', fee_percentage: '1.1', max_fee: '30', active: true, bank_code: '987')
     payment_credit = Payment.create!(name: 'Dev Card', type_payment: 'credito', fee_percentage: '1.2', max_fee: '50', active: true, bank_code: '000')
     company = Company.create!(name: 'TeachTech', cnpj: '92107397000133', address: 'Rua A 123', email: 'contato@teachtech.com')
-    
+    user = User.create!(email: 'matheus@teachtech.com.br', password: '123456')
+    login_as user, scope: :user
     visit company_path(company)
     click_on 'Adicionar Método de Pagamento'
     select "#{payment_boleto.name} - #{payment_boleto.type_payment}", from: 'Tipo de Pagamento'

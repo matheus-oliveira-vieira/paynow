@@ -6,16 +6,7 @@
     <% end %>
   </ul>
 <% end %>
-<%# <script>
-  function viewBankCode(payment_type_payment) {
-    if (payment_type_payment.value == "pix" || payment_type_payment.value == "boleto") {
 
-        document.getElementById("payment_bank_code").style.display = "block";
-    } else {
-        document.getElementById("payment_bank_code").style.display = "none";
-    }
-}<%= f.select :type_payment onchange="viewBankCode(this)", Payment.type_payments.keys
-</script> %>
 <%= form_with model: payment do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>

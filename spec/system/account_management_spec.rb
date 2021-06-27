@@ -65,9 +65,20 @@ describe 'Account Management' do
 
     end
   end
-  context 'deactivating company owner' do
-    xit 'successfully' do
-      
-    end 
+  context 'logout' do
+    it 'successfully' do
+      user = User.create!(email: 'matheus@paynow.com.br', password: '123456')
+
+      login_as user, scope: :user
+      visit root_path
+      click_on 'Sair'
+
+      expect(page).to have_text('Saiu com sucesso')
+      expect(page).to_not have_text('matheus@paynow.com.br')
+      expect(current_path).to eq(root_path)
+      # expect(page).to have_link('Registrar-me')
+      expect(page).to have_link('Entrar')
+      expect(page).to_not have_link('Sair')
+    end
   end
 end

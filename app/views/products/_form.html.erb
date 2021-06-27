@@ -1,3 +1,12 @@
+<% if product.errors.any? %>
+  <p>Foram encontrados <%= product.errors.count %> erro(s):</p>
+  <ul>
+    <% product.errors.full_messages.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= form_with model: product, url: company_products_path do |f| %>
     <%= f.label :name, 'Nome do Produto' %>
     <%= f.text_field :name%>

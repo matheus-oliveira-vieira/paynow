@@ -2,7 +2,9 @@ require 'rails_helper'
 
 describe 'Admin registers payments' do
   it 'successfully' do
-
+    user = User.create!(email: 'matheus@paynow.com', password: '123456')
+    login_as user, scope: :user
+    
     visit root_path
     click_on 'Formas de Pagamento'
     click_on 'Registrar uma Forma de Pagamento'
@@ -25,7 +27,9 @@ describe 'Admin registers payments' do
   end
 
   it 'credit card' do
-
+    user = User.create!(email: 'matheus@paynow.com', password: '123456')
+    login_as user, scope: :user
+    
     visit root_path
     click_on 'Formas de Pagamento'
     click_on 'Registrar uma Forma de Pagamento'

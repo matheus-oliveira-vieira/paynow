@@ -15,7 +15,7 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     @product.company_id = params[:company_id]
     if @product.save
-      byebug
+      #byebug
       redirect_to company_product_path(params[:company_id], @product)
     else
       render :new

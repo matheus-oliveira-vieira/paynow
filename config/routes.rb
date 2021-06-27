@@ -4,9 +4,9 @@ Rails.application.routes.draw do
   resources :companies do
     patch 'refresh_token', to: 'companies#refresh_token'
     resources :payment_methods do
-      resources :discounts
+      resources :discounts, only: %i[show new create]
     end
-    resources :products 
+    resources :products, only: %i[show new create]
   end
   resources :payments do
     patch 'activate', to: 'payments#activate'
