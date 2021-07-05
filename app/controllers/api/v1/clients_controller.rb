@@ -17,5 +17,6 @@ class Api::V1::ClientsController < ActionController::API
     end
   end
 
-  
 end
+
+#99 botles of oop
