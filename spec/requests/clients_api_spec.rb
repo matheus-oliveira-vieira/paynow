@@ -24,7 +24,7 @@ describe 'Clients API' do
 
       expect(response).to have_http_status(200)
       expect(response.content_type).to include('application/json')
-      #byebug
+      # byebug
       parsed_body = JSON.parse(response.body)
       expect(parsed_body['name']).to eq('Matheus Oliveira')
     end

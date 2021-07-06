@@ -12,7 +12,6 @@ class CompaniesController < ApplicationController
   end
 
   def create
-    
     @company = Company.new(company_params)
     if @company.save
       redirect_to @company
@@ -49,5 +48,4 @@ class CompaniesController < ApplicationController
   def company_params
     params.require(:company).permit(:name, :cnpj, :address, :email)
   end
-
 end

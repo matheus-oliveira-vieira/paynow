@@ -5,7 +5,7 @@ class PaymentMethod < ApplicationRecord
   before_create :adjust_blank_fields
 
   def display_name
-    "#{self.payment.name} - #{self.payment.type_payment}"
+    "#{payment.name} - #{payment.type_payment}"
   end
 
   def send_payment_confirmation
@@ -13,11 +13,11 @@ class PaymentMethod < ApplicationRecord
   end
 
   private
+
   def adjust_blank_fields
-    if Payment.find(self.payment_id).type_payment == 'pix' || Payment.find(self.payment_id).type_payment == 'credito'
+    if Payment.find(payment_id).type_payment == 'pix' || Payment.find(payment_id).type_payment == 'credito'
       self.agency = '000'
       self.bank_account = '000'
     end
   end
-
 end

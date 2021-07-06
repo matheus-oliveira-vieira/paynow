@@ -12,10 +12,9 @@ class PaymentsController < ApplicationController
   end
 
   def create
-    
     @payment = Payment.new(payment_params)
     if @payment.save
-      #byebug
+      # byebug
       @payment.active = true
       redirect_to @payment
     else
@@ -56,7 +55,9 @@ class PaymentsController < ApplicationController
   end
 
   private
+
   def payment_params
-    params.require(:payment).permit(:name, :type_payment, :fee_percentage, :max_fee, :logo, :bank_code)
+    params.require(:payment).permit(:name, :type_payment, :fee_percentage,
+                                    :max_fee, :logo, :bank_code)
   end
 end

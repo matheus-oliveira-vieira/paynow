@@ -4,7 +4,7 @@ describe 'Admin registers payments' do
   it 'successfully' do
     user = User.create!(email: 'matheus@paynow.com', password: '123456')
     login_as user, scope: :user
-    
+
     visit root_path
     click_on 'Formas de Pagamento'
     click_on 'Registrar uma Forma de Pagamento'
@@ -16,7 +16,7 @@ describe 'Admin registers payments' do
     fill_in 'Taxa máxima (R$)', with: '30'
     attach_file 'Logo', Rails.root.join('spec/fixtures/logo.png')
     click_on 'Criar Forma de Pagamento'
-    
+
     expect(current_path).to eq(payment_path(Payment.last))
     expect(page).to have_content('Banco Ximira')
     expect(page).to have_content('pix')
@@ -29,7 +29,7 @@ describe 'Admin registers payments' do
   it 'credit card' do
     user = User.create!(email: 'matheus@paynow.com', password: '123456')
     login_as user, scope: :user
-    
+
     visit root_path
     click_on 'Formas de Pagamento'
     click_on 'Registrar uma Forma de Pagamento'
@@ -40,7 +40,7 @@ describe 'Admin registers payments' do
     fill_in 'Taxa máxima (R$)', with: '30'
     attach_file 'Logo', Rails.root.join('spec/fixtures/logo.png')
     click_on 'Criar Forma de Pagamento'
-    
+
     expect(current_path).to eq(payment_path(Payment.last))
     expect(page).to have_content('Dev Card')
     expect(page).to have_content('credito')
@@ -55,7 +55,7 @@ describe 'Admin registers payments' do
     click_on 'Formas de Pagamento'
     click_on 'Registrar uma Forma de Pagamento'
     click_on 'Criar Forma de Pagamento'
-    
+
     expect(page).to have_content('não pode ficar em branco')
   end
 end

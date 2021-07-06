@@ -5,6 +5,7 @@ describe 'Visitor visit homepage' do
     visit root_path
 
     expect(page).to have_css('h1', text: 'PayNow')
-    expect(page).to have_css('h3', text: 'Boas vindas ao sistema de gestão de pagamentos')
+    expect(page).to have_css('h3',
+                             text: 'Boas vindas ao sistema de gestão de pagamentos')
   end
 end

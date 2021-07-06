@@ -2,14 +2,15 @@ require 'rails_helper'
 
 describe 'admin updates payment' do
   it 'successfully' do
-    payment = Payment.create!(name: 'Banco Ximira', type_payment: 5, fee_percentage: 1.1, max_fee: 30, active: true)
+    payment = Payment.create!(name: 'Banco Ximira', type_payment: 5,
+                              fee_percentage: 1.1, max_fee: 30, active: true)
 
     visit payment_path(payment)
     click_on 'Editar'
     fill_in 'Nome do Pagamento', with: 'Banco Peixola'
-      select 'boleto', from: 'Tipo de Pagamento'
-      fill_in 'Taxa por Cobrança', with: '1.5'
-      fill_in 'Taxa máxima (R$)', with: '50'
+    select 'boleto', from: 'Tipo de Pagamento'
+    fill_in 'Taxa por Cobrança', with: '1.5'
+    fill_in 'Taxa máxima (R$)', with: '50'
     click_on 'Salvar'
 
     expect(page).to have_content('Banco Peixola')
@@ -19,8 +20,9 @@ describe 'admin updates payment' do
   end
 
   it 'and active payment' do
-    payment = Payment.create!(name: 'Banco Ximira', type_payment: 5, fee_percentage: 1.1, max_fee: 30, active: false)
-    
+    payment = Payment.create!(name: 'Banco Ximira', type_payment: 5,
+                              fee_percentage: 1.1, max_fee: 30, active: false)
+
     visit payment_path(payment)
     click_on 'Ativar'
 
@@ -28,8 +30,9 @@ describe 'admin updates payment' do
   end
 
   it 'and inactive payment' do
-    payment = Payment.create!(name: 'Banco Ximira', type_payment: 5, fee_percentage: 1.1, max_fee: 30, active: true)
-    
+    payment = Payment.create!(name: 'Banco Ximira', type_payment: 5,
+                              fee_percentage: 1.1, max_fee: 30, active: true)
+
     visit payment_path(payment)
     click_on 'Inativar'
 

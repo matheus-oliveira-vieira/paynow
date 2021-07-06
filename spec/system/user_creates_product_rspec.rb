@@ -2,7 +2,8 @@ require 'rails_helper'
 
 describe 'user creates product' do
   it 'successfully' do
-    company = Company.create!(name: 'TeachTech', cnpj: '92107397000133', address: 'Rua A 123', email: 'contato@teachtech.com')
+    company = Company.create!(name: 'TeachTech', cnpj: '92107397000133',
+                              address: 'Rua A 123', email: 'contato@teachtech.com')
     user = User.create!(email: 'matheus@teachtech.com.br', password: '123456')
     login_as user, scope: :user
     visit company_path(company)
@@ -11,19 +12,19 @@ describe 'user creates product' do
     fill_in 'Valor (R$)', with: '30'
     click_on 'Salvar'
 
-    
     expect(page).to have_content('Curso de Ruby on Rails')
     expect(page).to have_content('R$ 30,00')
   end
-  
+
   it 'and attributes cannot be blank' do
-    company = Company.create!(name: 'TeachTech', cnpj: '92107397000133', address: 'Rua A 123', email: 'contato@teachtech.com')
+    company = Company.create!(name: 'TeachTech', cnpj: '92107397000133',
+                              address: 'Rua A 123', email: 'contato@teachtech.com')
     user = User.create!(email: 'matheus@teachtech.com.br', password: '123456')
     login_as user, scope: :user
     visit company_path(company)
     click_on 'Adicionar produto'
     click_on 'Salvar'
-    
+
     expect(page).to have_content('não pode ficar em branco')
   end
 end

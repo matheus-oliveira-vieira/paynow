@@ -4,19 +4,21 @@ class Api::V1::ChargesController < ActionController::API
     if @charge.save!
       render json: @charge, status: :created
     else
-      render json: {status: "error", code: 3000, message: "Error on create charge"}
+      render json: { status: 'error', code: 3000,
+                     message: 'Error on create charge' }
     end
   rescue ActionController::ParameterMissing
-    render status: :precondition_failed, json: { errors: 'parâmetros inválidos' }
+    render status: :precondition_failed,
+           json: { errors: 'parâmetros inválidos' }
   end
 
   def search_by_expiration_date
-    @charges = Charge.where('expiration_date like ?',"%#{params[:q]}%")
+    @charges = Charge.where('expiration_date like ?', "%#{params[:q]}%")
     render json: @charges
   end
 
   def search_by_payment_method
-    @charges = Charge.where('payment_method_id like ?',"%#{params[:q]}%")
+    @charges = Charge.where('payment_method_id like ?', "%#{params[:q]}%")
     render json: @charges
   end
 

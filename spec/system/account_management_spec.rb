@@ -17,11 +17,11 @@ describe 'Account Management' do
 
     it 'company owner with email and password' do
       visit root_path
-      click_on "Registrar-me"
+      click_on 'Registrar-me'
       fill_in 'Email', with: 'matheus@teachtech.com.br'
       fill_in 'Senha', with: '123456'
       fill_in 'Confirmação de Senha', with: '123456'
-      click_on "Criar conta"
+      click_on 'Criar conta'
 
       fill_in 'Razão Social', with: 'TeachTech'
       fill_in 'CNPJ', with: '92107397000133'
@@ -38,31 +38,30 @@ describe 'Account Management' do
     end
 
     it 'employee with email and password' do
-      company = Company.create!(name: 'TeachTech', cnpj: '92107397000133', address: 'Rua A 123', email: 'contato@teachtech.com')
+      company = Company.create!(name: 'TeachTech', cnpj: '92107397000133',
+                                address: 'Rua A 123', email: 'contato@teachtech.com')
 
       visit root_path
-      click_on "Registrar-me"
+      click_on 'Registrar-me'
       fill_in 'Email', with: 'ruth@teachtech.com.br'
       fill_in 'Senha', with: '123456'
       fill_in 'Confirmação de Senha', with: '123456'
-      click_on "Criar conta"
+      click_on 'Criar conta'
 
       expect(current_path).to eq(root_path)
       expect(page).to have_text('Login efetuado com sucesso')
       expect(page).to have_link('Sair')
-
     end
 
     it 'with domain email not valid' do
       visit root_path
-      click_on "Registrar-me"
+      click_on 'Registrar-me'
       fill_in 'Email', with: 'carla@gmail.com.br'
       fill_in 'Senha', with: '123456'
       fill_in 'Confirmação de Senha', with: '123456'
-      click_on "Criar conta"
+      click_on 'Criar conta'
 
       expect(page).to have_text('Domínio inválido')
-
     end
   end
   context 'logout' do
