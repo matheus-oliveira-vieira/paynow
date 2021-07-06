@@ -2,11 +2,11 @@ require 'rails_helper'
 
 describe 'User view charges' do
   it 'from 30 days ago' do
-    company = Company.create!(name: 'TeachTech', cnpj: '92107397000133', address: 'Rua A 123', email: 'contato@teachtech.com')
+    company = create(:company)
     product = Product.create!(name: 'Curso de Ruby on Rails', price: 30, company_id: company.id)
-    payment_credit = Payment.create!(name: 'Dev Card', type_payment: 'credito', fee_percentage: '1.2', max_fee: '50', active: true, bank_code: '000')
+    payment_credit = create(:payment)
     payment_boleto = Payment.create!(name: 'Banco Ximira', type_payment: 'boleto', fee_percentage: '1.1', max_fee: '30', active: true, bank_code: '987')
-    payment_method1 = PaymentMethod.create!(payment_id: payment_credit.id, company_id: company.id, code: 'qweasdzxc123poi098lk')
+    payment_method1 = create(:payment_method)
     payment_method2 = PaymentMethod.create!(payment_id: payment_boleto.id, company_id: company.id, agency: '123', bank_account: '1234-5')
     client1 = Client.create!(name: 'Matheus Oliveira', cpf: '12312312512')
     client2 = Client.create!(name: 'Gabriela Oliveira', cpf: '12312312512')
