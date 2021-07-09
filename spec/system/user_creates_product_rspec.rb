@@ -2,8 +2,7 @@ require 'rails_helper'
 
 describe 'user creates product' do
   it 'successfully' do
-    company = Company.create!(name: 'TeachTech', cnpj: '92107397000133',
-                              address: 'Rua A 123', email: 'contato@teachtech.com')
+    company = create(:company)
     user = User.create!(email: 'matheus@teachtech.com.br', password: '123456')
     login_as user, scope: :user
     visit company_path(company)
@@ -17,8 +16,7 @@ describe 'user creates product' do
   end
 
   it 'and attributes cannot be blank' do
-    company = Company.create!(name: 'TeachTech', cnpj: '92107397000133',
-                              address: 'Rua A 123', email: 'contato@teachtech.com')
+    company = create(:company)
     user = User.create!(email: 'matheus@teachtech.com.br', password: '123456')
     login_as user, scope: :user
     visit company_path(company)

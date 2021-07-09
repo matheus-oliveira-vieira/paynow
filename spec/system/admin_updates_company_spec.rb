@@ -2,8 +2,7 @@ require 'rails_helper'
 
 describe 'admin updates company' do
   it 'successfully' do
-    company = Company.create!(name: 'TeachTech', cnpj: '92107397000133',
-                              address: 'Rua A 123', email: 'contato@teachtech.com')
+    company = create(:company)
     user = User.create!(email: 'matheus@paynow.com.br', password: '123456')
     login_as user, scope: :user
     visit company_path(company)
@@ -21,8 +20,7 @@ describe 'admin updates company' do
   end
 
   it 'request new token' do
-    company = Company.create!(name: 'TeachTech', cnpj: '92107397000133',
-                              address: 'Rua A 123', email: 'contato@teachtech.com')
+    company = create(:company)
     user = User.create!(email: 'matheus@paynow.com.br', password: '123456')
     login_as user, scope: :user
     visit company_path(company)
@@ -33,8 +31,7 @@ describe 'admin updates company' do
   end
 
   it 'user can not update token' do
-    company = Company.create!(name: 'TeachTech', cnpj: '92107397000133',
-                              address: 'Rua A 123', email: 'contato@teachtech.com')
+    company = create(:company)
     user = User.create!(email: 'matheus@teachtech.com.br', password: '123456')
     login_as user, scope: :user
     visit company_path(company)

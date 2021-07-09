@@ -2,6 +2,6 @@ FactoryBot.define do
   factory :payment_method do
     payment
     company
-    code { 'qweasdzxc123poi098lk' }
+    sequence(:code) { |n| "qweasdzxc123poi098l#{n}" }
   end
 end

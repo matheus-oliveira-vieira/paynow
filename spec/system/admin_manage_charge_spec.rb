@@ -2,8 +2,7 @@ require 'rails_helper'
 
 describe 'Admin manage charges' do
   it 'and accept successfully' do
-    company = Company.create!(name: 'TeachTech', cnpj: '92107397000133',
-                              address: 'Rua A 123', email: 'contato@teachtech.com')
+    company = create(:company)
     product = Product.create!(name: 'Curso de Ruby on Rails', price: 30,
                               company_id: company.id)
     payment_credit = Payment.create!(name: 'Dev Card', type_payment: 'credito',

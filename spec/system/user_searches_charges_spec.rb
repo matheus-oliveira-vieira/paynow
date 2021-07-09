@@ -8,7 +8,7 @@ describe 'User view charges' do
     payment_credit = create(:payment)
     payment_boleto = Payment.create!(name: 'Banco Ximira',
                                      type_payment: 'boleto', fee_percentage: '1.1', max_fee: '30', active: true, bank_code: '987')
-    payment_method1 = create(:payment_method)
+    payment_method1 = create(:payment_method, company_id: company.id)
     payment_method2 = PaymentMethod.create!(payment_id: payment_boleto.id,
                                             company_id: company.id, agency: '123', bank_account: '1234-5')
     client1 = Client.create!(name: 'Matheus Oliveira', cpf: '12312312512')

@@ -2,8 +2,7 @@ require 'rails_helper'
 
 describe 'user applies discount to payment method' do
   it 'successfully' do
-    company = Company.create!(name: 'TeachTech', cnpj: '92107397000133',
-                              address: 'Rua A 123', email: 'contato@teachtech.com')
+    company = create(:company)
     payment_credit = Payment.create!(name: 'Dev Card', type_payment: 'credito',
                                      fee_percentage: '1.2', max_fee: '50', active: true, bank_code: '000')
     payment_method = PaymentMethod.create!(payment_id: payment_credit.id,
@@ -24,8 +23,7 @@ describe 'user applies discount to payment method' do
     expect(page).to have_content('5%')
   end
   it 'discount percentage can not be blank' do
-    company = Company.create!(name: 'TeachTech', cnpj: '92107397000133',
-                              address: 'Rua A 123', email: 'contato@teachtech.com')
+    company = create(:company)
     payment_credit = Payment.create!(name: 'Dev Card', type_payment: 'credito',
                                      fee_percentage: '1.2', max_fee: '50', active: true, bank_code: '000')
     payment_method = PaymentMethod.create!(payment_id: payment_credit.id,

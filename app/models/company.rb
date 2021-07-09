@@ -13,5 +13,6 @@ class Company < ApplicationRecord
 
   def generate_token
     self.token = SecureRandom.hex(20)
+    generate_token if Company.exists?(token: self.token)
   end
 end

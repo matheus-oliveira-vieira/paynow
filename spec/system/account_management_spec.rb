@@ -38,8 +38,7 @@ describe 'Account Management' do
     end
 
     it 'employee with email and password' do
-      company = Company.create!(name: 'TeachTech', cnpj: '92107397000133',
-                                address: 'Rua A 123', email: 'contato@teachtech.com')
+      company = create(:company)
 
       visit root_path
       click_on 'Registrar-me'
